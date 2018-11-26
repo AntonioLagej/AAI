@@ -18,13 +18,13 @@ public Produto(int codigo, String nome, double precoUnitario, int estoque, int e
 	this.estoqueMinimo = estoqueMinimo;
 	this.dataCad = dataCad;
 }
-void diminuirEstoque(int quant)throws SisComException {
+public void diminuirEstoque(int quant)throws SisComException {
 	if(estoque<quant) {
 		throw new SisComException(this.nome,estoque,"Estoque Insuficiente. ");
 	}else
-		this.estoque++;
+		this.estoque--;
 }
-void AumentarEstoque(int quant) {
+public void AumentarEstoque(int quant) {
 	this.estoque++;
 }
 public int getCodigo() {
@@ -68,7 +68,7 @@ public String toString() {
 	return "Produto [codigo=" + codigo + ", nome=" + nome + ", precoUnitario=" + precoUnitario + ", estoque=" + estoque
 			+ ", estoqueMinimo=" + estoqueMinimo + ", dataCad=" + dataCad + "]";
 }
-@Override
+
 public int compareTo(Produto p) {
 int r=0;
 	if(this.nome.length()<p.nome.length()) {
@@ -78,4 +78,5 @@ int r=0;
 }
 	return r;
 }
+
 }
